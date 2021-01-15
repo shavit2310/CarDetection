@@ -1,6 +1,6 @@
 # Yolo object detection with openCV for images and ffmpeg for videos
 
-# From terminal: python main.py --input videos/vide_1.mp4 --output output/video_1.avi --yolo yolo-coco
+# From terminal: python main.py --input videos/video_1.mp4 --output output/video_1.avi --yolo yolo-coco
 #                python main.py --input imagees/test8.jpg --output output/test8.txt --yolo yolo-coco
 
 # All the issues in one file
