@@ -51,9 +51,10 @@ For Image- python main.py --input images/name_of_image.gif --output output/same_
 
 
 ## References
-  * Yolo/Darknet website
-  * Yolo/Darknet github
+  * Yolo/Darknet website: https://pjreddie.com/darknet/yolo/
+  * https://www.pyimagesearch.com/2018/11/12/yolo-object-detection-with-opencv/
   * Object detection with YOLO (YOLO explanation)
+  *  https://github.com/shavit2310/CarND-Vehicle-Detection/blob/master/README.md
 
 # Still todo
 implement ffmpeg for video
