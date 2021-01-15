@@ -1,7 +1,7 @@
 #YOLO - SSD # Car-detection based traind model
 
 The goal of this project is to write a YOLO object detector use to detect objects in both images and video streams using Deep Learning, OpenCV, ffmpeg.
-
+## NOTE: due to too-big weights file, the weights is not in the repo. please download it from https://pjreddie.com/media/files/yolov3.weights  !!!
 ## implementaition stages
   We’ll be using YOLOv3, in particular, YOLO trained on the COCO dataset. 
   In order to use a trained model, we will use the weight and config outputs. 
