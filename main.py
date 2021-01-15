@@ -1,6 +1,6 @@
 # Yolo object detection with openCV for images and ffmpeg for videos
 
-# From terminal: python CV2_for_video.py --input videos/car_chase_01.mp4 --output output/car_chase_01.avi --yolo yolo-coco
+# From terminal: python main.py --input videos/vide_1.mp4 --output output/video_1.avi --yolo yolo-coco
 #                python main.py --input imagees/test8.jpg --output output/test8.txt --yolo yolo-coco
 
 # All the issues in one file
@@ -13,7 +13,7 @@ import json
 import cv2
 import os
 
-import ffmpg_for_video
+#import ffmpg_for_video
 
 
 def construct_arguments(media):
@@ -41,6 +41,9 @@ def load_trained_model(media_selection, args):
             media_selection == 2 and os.path.splitext(args["input"])[1] not in ['.mp4', '.gif']:
         print("error media chosen, try again")
         err = -1
+        ln = None
+        net = None
+        LABELS = None
 
     if not err:
         # load the COCO class labels our YOLO model was trained on
@@ -59,7 +62,7 @@ def load_trained_model(media_selection, args):
         ln = net.getLayerNames()
         ln = [ln[i[0] - 1] for i in net.getUnconnectedOutLayers()]
 
-        return ln, net, LABELS, err
+    return ln, net, LABELS, err
 
 
 def load_input_snap(selected_media):
@@ -67,12 +70,13 @@ def load_input_snap(selected_media):
     vs = None
     image = None
     (H, W) = (None, None)
+    err = 0
 
     if selected_media == 1:
         # load our input image and grab its spatial dimensions
         image = cv2.imread(args["input"])
-        if image and image.any():
-            (H, W) = image.shape[:2]
+        if image:
+             (H, W) = image.shape[:2]
     else:
         # load our input streaming video and grab its spatial dimensions
         vs = cv2.VideoCapture(args["input"])
@@ -301,17 +305,16 @@ if __name__ == '__main__':
     user_media_selection = int(input(" Choose for image 1 and for video 2. Default choose is image (1)"))
 
     # default value
-    if user_media_selection != 1 or user_media_selection != 2:
+    if user_media_selection != 1 and user_media_selection != 2:
         user_media_selection = 1
 
     # construct the argument parse and parse the arguments
     args = construct_arguments(user_media_selection)
 
     # load class labels & weights & config our YOLO model was trained on
-    ln, net, LABELS, err = load_trained_model(user_media_selection, args)
+    ln, net, LABELS, error = load_trained_model(user_media_selection, args)
 
-    if not err:
-
+    if not error:
         # load input image & video and grab its spatial dimensions
         # and output associated probabilities
         # load input image  and grab its spatial dimensions

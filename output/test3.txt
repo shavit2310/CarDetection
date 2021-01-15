@@ -1,0 +1,1 @@
+[{"detected_obj": 1, "x_cord": 873, "y_cord": 414, "x_cord+width": 959, "y_cord+high": 468}]
